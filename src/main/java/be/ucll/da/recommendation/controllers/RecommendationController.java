@@ -59,7 +59,7 @@ public class RecommendationController {
     }
 
     private void addRecommendedItemToAllSavedPreferences(Map<User, Map<Item, Float>> allSavedPreferences, RecommendedItem item) {
-        User user = new User(item.getEmailAddress());
+        User user = new User(item.getUserId());
         if(!allSavedPreferences.containsKey(user)) {
             allSavedPreferences.put(user, new HashMap<>());
         }

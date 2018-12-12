@@ -69,7 +69,7 @@ public class Application {
         List<RecommendedItem> recommendedItems = new ArrayList<>();
         for(Item recommendedItem : entry.getValue().keySet()) {
             RecommendedItem aRecommendedItem = new RecommendedItem();
-            aRecommendedItem.setEmailAddress(entry.getKey().toString());
+            aRecommendedItem.setUserId(entry.getKey().toString());
             aRecommendedItem.setRatedItem(UUID.fromString(recommendedItem.toString()));
             aRecommendedItem.setRating(entry.getValue().get(recommendedItem));
             recommendedItems.add(aRecommendedItem);
