@@ -4,6 +4,8 @@
     <bytecodeTargetLevel>
       <module name="be.ucll.da.recommendation.recommendation.main" target="1.8" />
       <module name="be.ucll.da.recommendation.recommendation.test" target="1.8" />
+      <module name="recommendation_main" target="1.8" />
+      <module name="recommendation_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

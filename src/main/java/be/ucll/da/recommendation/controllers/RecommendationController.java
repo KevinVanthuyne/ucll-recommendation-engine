@@ -26,24 +26,24 @@ public class RecommendationController {
         return repository.save(recommendedItem);
     }
 
-    @RequestMapping("/recommend/{emailAddress}")
-    public Map<Item, Float> getRecommendedItems(@PathVariable String emailAddress) {
-        List<RecommendedItem> recommendedItemsByEmailAddress = repository.findAllByEmailAddress(emailAddress);
+    @RequestMapping("/recommend/{userId}")
+    public Map<Item, Float> getRecommendedItems(@PathVariable String userId) {
+        List<RecommendedItem> recommendedItemsByUserId = repository.findAllByUserId(userId);
 
-        if(recommendedItemsByEmailAddress.isEmpty()) {
+        if(recommendedItemsByUserId.isEmpty()) {
             return null;
         }
 
         SlopeOne slopeOnePredictionMachine = getSlopeOnePredictionMachine();
-        Map<Item, Float> userPrefences = mapToSlopeOneInput(recommendedItemsByEmailAddress);
+        Map<Item, Float> userPrefences = mapToSlopeOneInput(recommendedItemsByUserId);
 
         return slopeOnePredictionMachine.predict(userPrefences);
     }
 
-    private Map<Item, Float> mapToSlopeOneInput(List<RecommendedItem> recommendedItemsByEmailAddress) {
+    private Map<Item, Float> mapToSlopeOneInput(List<RecommendedItem> recommendedItemsById) {
         HashMap<Item, Float> userPreferences = new HashMap<>();
 
-        for (RecommendedItem recommendedItem : recommendedItemsByEmailAddress) {
+        for (RecommendedItem recommendedItem : recommendedItemsById) {
             userPreferences.put(new Item(recommendedItem.getRatedItem()), recommendedItem.getRating());
         }
         return userPreferences;

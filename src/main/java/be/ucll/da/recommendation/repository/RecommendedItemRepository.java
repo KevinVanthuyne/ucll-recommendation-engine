@@ -8,6 +8,6 @@ import java.util.UUID;
 
 public interface RecommendedItemRepository extends CrudRepository<RecommendedItem, UUID> {
 
-    List<RecommendedItem> findAllByEmailAddress(String emailAddress);
+    List<RecommendedItem> findAllByUserId(String userId);
 
 }

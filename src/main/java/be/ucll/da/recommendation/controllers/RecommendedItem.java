@@ -12,7 +12,7 @@ public class RecommendedItem {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private UUID id;
-    private String emailAddress;
+    private String userId;
     private UUID ratedItem;
     private float rating;
 
@@ -24,12 +24,12 @@ public class RecommendedItem {
         this.id = id;
     }
 
-    public String getEmailAddress() {
-        return emailAddress;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public UUID getRatedItem() {
