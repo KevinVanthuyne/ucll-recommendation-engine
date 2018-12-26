@@ -35,9 +35,9 @@ public class RecommendationController {
         }
 
         SlopeOne slopeOnePredictionMachine = getSlopeOnePredictionMachine();
-        Map<Item, Float> userPrefences = mapToSlopeOneInput(recommendedItemsByUserId);
+        Map<Item, Float> userPreferences = mapToSlopeOneInput(recommendedItemsByUserId);
 
-        return slopeOnePredictionMachine.predict(userPrefences);
+        return slopeOnePredictionMachine.predict(userPreferences);
     }
 
     private Map<Item, Float> mapToSlopeOneInput(List<RecommendedItem> recommendedItemsById) {
