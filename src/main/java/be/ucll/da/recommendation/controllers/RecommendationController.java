@@ -13,6 +13,7 @@ import java.util.stream.StreamSupport;
 
 
 @RestController
+@CrossOrigin
 public class RecommendationController {
 
     private RecommendedItemRepository repository;
