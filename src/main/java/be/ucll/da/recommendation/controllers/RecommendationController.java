@@ -41,6 +41,12 @@ public class RecommendationController {
         return slopeOnePredictionMachine.predict(userPreferences);
     }
 
+    // why: for testing
+    @GetMapping("/recommend/all")
+    public Iterable<RecommendedItem> getAllRecommendations() {
+        return repository.findAll();
+    }
+
     private Map<Item, Float> mapToSlopeOneInput(List<RecommendedItem> recommendedItemsById) {
         HashMap<Item, Float> userPreferences = new HashMap<>();
 
