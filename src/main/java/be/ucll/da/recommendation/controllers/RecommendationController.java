@@ -30,10 +30,12 @@ public class RecommendationController {
     @RequestMapping("/recommend/{userId}")
     public Map<Item, Float> getRecommendedItems(@PathVariable String userId) {
         List<RecommendedItem> recommendedItemsByUserId = repository.findAllByUserId(userId);
+        System.out.println(recommendedItemsByUserId);
 
         if(recommendedItemsByUserId.isEmpty()) {
             return null;
         }
+        System.out.println("Recommendations not empty for " + userId);
 
         SlopeOne slopeOnePredictionMachine = getSlopeOnePredictionMachine();
         Map<Item, Float> userPreferences = mapToSlopeOneInput(recommendedItemsByUserId);
@@ -44,6 +46,9 @@ public class RecommendationController {
     // why: for testing
     @GetMapping("/recommend/all")
     public Iterable<RecommendedItem> getAllRecommendations() {
+        if (repository.findAll() == null) {
+            System.out.println("REPOSITORY IS EMPTY");
+        }
         return repository.findAll();
     }
 
